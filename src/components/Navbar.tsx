@@ -3,6 +3,7 @@ import logo from "/public/steik23.svg";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import LoginButton from "./LoginButton";
 
 const NavList = ({ href, routerPathname, lable }: { href: string; routerPathname: string; lable: string }) => (
   <Link href={href} className="hidden lg:block h-full">
@@ -57,7 +58,7 @@ const Navbar = () => {
   return (
     <>
       <header
-        className={`fixed left-0 top-0 z-10 flex w-full items-center bg-blue-50 px-0 duration-500 ease-in-out ${
+        className={`fixed left-0 top-0 z-10 flex w-full items-center bg-slate-50 px-0 duration-500 ease-in-out ${
           scrollDirection ? "translate-y-0" : "-translate-y-24"
         } ${shadow ? "border-b-2" : "shadow-lg"}`}>
         <div className="w-full px-4">
@@ -73,11 +74,14 @@ const Navbar = () => {
               />
               <h1 className="font-extrabold text-4xl text-blue-900 hover:text-blue-700 duration-100 ease-in ">STEI K 23</h1>
             </Link>
-            <div className="flex gap-0 py-1 text-[#6B778C] lg:gap-4 lg:py-5 xl:gap-6">
-              <NavList href="/" routerPathname={router.pathname} lable="Home" />
-              <NavList href="/tentang-bpa" routerPathname={router.pathname} lable="BPA" />
-              <NavList href="/akademik" routerPathname={router.pathname} lable="Akademik" />
-              <NavList href="/acara-kemahasiswaan" routerPathname={router.pathname} lable="Acara Kemahasiswaan" />
+            <div className="flex gap-4 items-center">
+              <div className="flex gap-0 py-1 text-[#6B778C] lg:gap-4 lg:py-5 xl:gap-6 items-center">
+                <NavList href="/" routerPathname={router.pathname} lable="Home" />
+                <NavList href="/tentang-bpa" routerPathname={router.pathname} lable="BPA" />
+                <NavList href="/akademik" routerPathname={router.pathname} lable="Akademik" />
+                <NavList href="/acara-kemahasiswaan" routerPathname={router.pathname} lable="Acara Kemahasiswaan" />
+              </div>
+              <LoginButton />
             </div>
           </div>
         </div>
