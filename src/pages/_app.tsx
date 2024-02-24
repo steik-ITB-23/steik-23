@@ -11,7 +11,7 @@ const fontFam = Poppins({
 
 export default function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   return (
-    <SessionProvider session={session}>
+    <SessionProvider baseUrl={process.env.BASE_URL} session={session}>
       <NextNProgress options={{ showSpinner: false }} />
       <main className={`flex h-0 min-h-screen flex-col items-center justify-between lg:p-24 bg-slate-50 ${fontFam.className}`}>
         <Component {...pageProps} />
