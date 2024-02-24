@@ -15,7 +15,7 @@ const ComingSoon = ({ showKembali = true }: { showKembali?: boolean }) => {
 
   return (
     <div className="flex flex-col gap-4 items-center">
-      <h1 className="font-bold text-2xl">Mohon bersabar man teman</h1>
+      <p className="font-bold text-2xl">Mohon bersabar man teman</p>
       <div className="loader pt-10">
         <div className="wrapper">
           <div className="catContainer">

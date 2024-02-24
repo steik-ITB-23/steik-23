@@ -5,10 +5,15 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 
 const NavList = ({ href, routerPathname, lable }: { href: string; routerPathname: string; lable: string }) => (
-  <Link href={href} className="hidden lg:block">
-    <div className={routerPathname === "/direktori-franchise" ? "border-[#0081f9] text-[#0081f9]" : "hover:text-[#0081f9]"}>
-      {lable}
-    </div>
+  <Link href={href} className="hidden lg:block h-full">
+    <p
+      className={
+        routerPathname === href
+          ? "text-[#0081f9] border-b-2 border-blue-300"
+          : "hover:text-[#0081f9] hover:border-b-2 border-blue-300"
+      }>
+      <span className="text-[16px]">{lable}</span>
+    </p>
   </Link>
 );
 
@@ -52,28 +57,27 @@ const Navbar = () => {
   return (
     <>
       <header
-        className={`fixed left-0 top-0 z-10 flex w-full items-center bg-blue-50 px-0 py-2 duration-500 ease-in-out  ${
+        className={`fixed left-0 top-0 z-10 flex w-full items-center bg-blue-50 px-0 duration-500 ease-in-out ${
           scrollDirection ? "translate-y-0" : "-translate-y-24"
         } ${shadow ? "border-b-2" : "shadow-lg"}`}>
         <div className="w-full px-4">
           <div className="relative flex items-center justify-between">
-            <Link href="/" className="w-[4.5rem] h-[4.5rem] flex items-center">
+            <Link href="/" className="w-fit h-[4.5rem] flex items-center gap-2">
               <Image
                 priority
                 src={logo}
-                className="cursor-pointer object-contain mix-blend-multiply h-full w-auto"
+                className="cursor-pointer object-contain mix-blend-multiply h-full w-auto py-2"
                 height={30}
                 width={30}
                 alt="Logo STEI-K 23"
               />
+              <h1 className="font-extrabold text-4xl text-blue-900 hover:text-blue-700 duration-100 ease-in ">STEI K 23</h1>
             </Link>
-            <div className="flex gap-4">
-              <div className="flex gap-0 py-1 text-[15px] text-[#6B778C] lg:gap-4 lg:py-5 xl:gap-6">
-                <NavList href="/" routerPathname={router.pathname} lable="Home" />
-                <NavList href="/tentang-bpa" routerPathname={router.pathname} lable="BPA" />
-                <NavList href="/akademik" routerPathname={router.pathname} lable="Akademik" />
-                <NavList href="/acara-kemahasiswaan" routerPathname={router.pathname} lable="Acara Kemahasiswaan" />
-              </div>
+            <div className="flex gap-0 py-1 text-[#6B778C] lg:gap-4 lg:py-5 xl:gap-6">
+              <NavList href="/" routerPathname={router.pathname} lable="Home" />
+              <NavList href="/tentang-bpa" routerPathname={router.pathname} lable="BPA" />
+              <NavList href="/akademik" routerPathname={router.pathname} lable="Akademik" />
+              <NavList href="/acara-kemahasiswaan" routerPathname={router.pathname} lable="Acara Kemahasiswaan" />
             </div>
           </div>
         </div>
