@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import LoginButton from "./LoginButton";
 
 const NavList = ({ href, routerPathname, lable }: { href: string; routerPathname: string; lable: string }) => (
-  <Link href={href} className="hidden lg:block h-full">
+  <Link href={href} className="hidden md:block h-full">
     <p
       className={
         routerPathname === href
@@ -65,17 +65,17 @@ const Navbar = () => {
           <div className="relative flex items-center justify-between">
             <Link href="/" className="w-fit h-[4.5rem] flex items-center gap-2">
               <Image
-                priority
                 src={logo}
-                className="cursor-pointer object-contain mix-blend-multiply h-full w-auto py-2"
+                className="cursor-pointer object-contain mix-blend-multiply h-4 min-h-full w-auto py-2"
                 height={30}
                 width={30}
                 alt="Logo STEI-K 23"
+                blurDataURL="https://steik23.netlify.app/steik23.svg"
               />
               <h1 className="font-extrabold text-4xl text-blue-900 hover:text-blue-700 duration-100 ease-in ">STEI K 23</h1>
             </Link>
             <div className="flex gap-4 items-center">
-              <div className="flex gap-0 py-1 text-[#6B778C] lg:gap-4 lg:py-5 xl:gap-6 items-center">
+              <div className="flex gap-0 py-1 text-[#6B778C] md:gap-4 lg:py-5 xl:gap-6 items-center">
                 <NavList href="/" routerPathname={router.pathname} lable="Home" />
                 <NavList href="/tentang-bpa" routerPathname={router.pathname} lable="BPA" />
                 <NavList href="/akademik" routerPathname={router.pathname} lable="Akademik" />
