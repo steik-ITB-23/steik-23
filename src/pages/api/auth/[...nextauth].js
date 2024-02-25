@@ -11,17 +11,16 @@ export const authOptions = {
   ],
   callbacks: {
     async signIn({ user }) {
+      console.log("SignIn Callback:", user);
       return !!user;
     },
     async session({ session, token, user }) {
+      console.log("Session Callback:", session, user);
       return session;
     },
   },
-  pages: {
-    signIn: "/auth/signin",
-    verifyRequest: "/auth/verify-request",
-    error: "/auth/error",
-  },
 };
 
-export default NextAuth(authOptions);
+const authHandler = NextAuth(authOptions);
+
+export default authHandler;
