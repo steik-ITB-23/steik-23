@@ -6,6 +6,10 @@
   .text-balance {
     text-wrap: balance;
   }
+
+  p {
+    @apply text-[13px] sm:text-sm;
+  }
 }
 
 /* loader */

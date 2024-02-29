@@ -12,9 +12,7 @@ const NavListDesktop = ({ href, routerPathname, lable }: { href: string; routerP
   <Link href={href} className="hidden md:block h-full">
     <p
       className={
-        routerPathname === href
-          ? "text-[#0081f9] border-b-2 border-blue-300"
-          : "hover:text-[#0081f9] hover:border-b-2 border-blue-300"
+        routerPathname === href ? "border-b-2 border-gray-400" : "hover:brightness-110 hover:border-b-2 border-gray-400"
       }>
       <span className="text-[16px]">{lable}</span>
     </p>
@@ -27,11 +25,17 @@ const Navbar = () => {
   const [scrollDirection, setScrollDirection] = useState(true);
   const [prevScrollPos, setPrevScrollPos] = useState(0);
   const [shadow, setShadow] = useState(true);
-  const [scrolled100vw, setScrolled100vw] = useState(false);
+  const [scrolledOneThirdvw, setScrolledOneThirdvw] = useState(false);
   const [navMobile, setNavMobile] = useState(false);
 
   const handleNav = (bool: boolean) => {
     setNavMobile(bool);
+  };
+
+  const getTextColor = () => {
+    return router.pathname === "/" && !scrolledOneThirdvw
+      ? "text-gray-200 hover:text-white"
+      : "text-gray-900 hover:text-gray-700";
   };
 
   useEffect(() => {
@@ -44,9 +48,9 @@ const Navbar = () => {
         setScrollDirection(true);
         setShadow(false);
         if (currentScrollPos >= window.innerWidth / 3) {
-          setScrolled100vw(true);
+          setScrolledOneThirdvw(true);
         } else {
-          setScrolled100vw(false);
+          setScrolledOneThirdvw(false);
         }
       } else {
         setScrollDirection(false);
@@ -67,24 +71,29 @@ const Navbar = () => {
     } else {
       setScrollDirection(true);
       if (currentScrollPos >= window.innerWidth) {
-        setScrolled100vw(true);
+        setScrolledOneThirdvw(true);
       } else {
-        setScrolled100vw(false);
+        setScrolledOneThirdvw(false);
       }
     }
     setPrevScrollPos(currentScrollPos);
   }, []);
 
+  useEffect(() => {
+    console.log({ scrollDirection });
+  }, [scrollDirection]);
   return (
     <>
       <header
-        className={`fixed left-0 top-0 z-10 flex w-full items-center bg-slate-50 px-0 duration-500 ease-in-out ${
-          scrollDirection ? "translate-y-0" : "-translate-y-24"
-        } ${shadow ? "border-b-2" : "shadow-lg"}`}>
-        <div className="w-full px-4">
+        className={`sticky left-0 top-0 z-50 flex w-full items-center px-0 duration-500 ease-in-out ${
+          router.pathname === "/" ? "border-slate-700" : "border-slate-200"
+        } ${scrollDirection ? "translate-y-0" : "-translate-y-24"} ${shadow ? "border-b-2" : "border-0 shadow-lg"} ${
+          router.pathname === "/" && !scrolledOneThirdvw ? "bg-[#181b1b] " : "bg-slate-50"
+        }`}>
+        <div className="w-full px-2">
           <div className="relative flex items-center justify-between">
             <Link href="/" className="w-fit h-[4.5rem] flex items-center gap-2">
-              <div className={`h-4 min-h-full w-auto py-2 animate-pulse ${scrolled100vw ? "scale-100" : "w-0 scale-0"}`}>
+              <div className={`h-4 min-h-full py-2 ${scrolledOneThirdvw ? "scale-100 w-auto" : "w-0 scale-0"}`}>
                 <Image
                   src="/steik23.svg"
                   className={`w-full h-full cursor-pointer object-contain mix-blend-multiply`}
@@ -92,15 +101,16 @@ const Navbar = () => {
                   width={30}
                   alt="Logo STEI-K 23"
                   blurDataURL="https://steik23.netlify.app/steik23.svg"
+                  priority
                 />
               </div>
-              <h1 className="font-extrabold text-4xl text-blue-900 hover:text-blue-700 duration-100 ease-in ">STEI K 23</h1>
+              <h1 className={`font-extrabold text-4xl duration-100 ease-in tracking-wider ${getTextColor()}`}>Syntax</h1>
             </Link>
 
             {/* Navigation list */}
             <div className="flex md:gap-4 items-center">
               {/* Desktop navigation list */}
-              <div className="flex gap-0 py-1 text-[#6B778C] md:gap-4 lg:py-5 xl:gap-6 items-center">
+              <div className={`flex gap-0 py-1 text-[#6B778C] md:gap-4 lg:py-5 xl:gap-6 items-center ${getTextColor()}`}>
                 <NavListDesktop href="/" routerPathname={router.pathname} lable="Home" />
                 <NavListDesktop href="/tentang-bpa" routerPathname={router.pathname} lable="BPA" />
                 <NavListDesktop href="/akademik" routerPathname={router.pathname} lable="Akademik" />
@@ -109,19 +119,19 @@ const Navbar = () => {
 
               {/* Mobile Nav Button */}
               <LoginButton />
-              <div className="block md:hidden bg-slate-50 hover:brightness-95 p-2 rounded-md" onClick={() => handleNav(true)}>
+              <button className="block md:hidden hover:brightness-95 p-2 rounded-md ml-2" onClick={() => handleNav(true)}>
                 <RxHamburgerMenu size={30} />
-              </div>
+              </button>
 
               {/* Mobile Nav List */}
               <div
                 onClick={() => handleNav(false)}
-                className={navMobile ? "md:hidden fixed left-0 top-0 w-full h-screen bg-black/70" : ""}>
+                className={`text-slate-800 ${navMobile ? "md:hidden fixed left-0 top-0 w-full h-screen bg-black/70" : ""}`}>
                 <div
                   className={
                     navMobile
-                      ? "fixed left-0 top-0 w-[240px] h-screen bg-slate-50 p-4 pt-10 ease-in duration-500 flex flex-col gap-4"
-                      : "fixed left-[-150%] w-[240px] h-screen bg-slate-50 top-0 p-4 pt-10 ease-in duration-500 flex flex-col gap-4 items-start"
+                      ? "fixed right-0 top-0 w-[240px] h-screen bg-slate-50 p-4 pt-10 ease-in duration-500 flex flex-col gap-4"
+                      : "fixed right-[-150%] w-[240px] h-screen bg-slate-50 top-0 p-4 pt-10 ease-in duration-500 flex flex-col gap-4 items-start"
                   }>
                   <section className="space-y-2">
                     <p className="text-3xl font-bold leading-none">SYNTAX</p>

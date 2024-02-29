@@ -3,6 +3,8 @@ import type { AppProps } from "next/app";
 import NextNProgress from "nextjs-progressbar";
 import { Poppins } from "next/font/google";
 import { SessionProvider } from "next-auth/react";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 const fontFam = Poppins({
   weight: ["200", "300", "400", "500", "600", "700", "800", "900"],
@@ -10,12 +12,48 @@ const fontFam = Poppins({
 });
 
 export default function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
+  const router = useRouter();
+  const [scrolledOneThirdvw, setScrolledOneThirdvw] = useState(false);
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
+
+  useEffect(() => {
+    const currentScrollPos = window.pageYOffset;
+    if (currentScrollPos !== 0) {
+      if (currentScrollPos >= window.innerWidth / 3) {
+        setScrolledOneThirdvw(true);
+      } else {
+        setScrolledOneThirdvw(false);
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    const changeShadow = () => {
+      const currentScrollPos = window.scrollY;
+      if (currentScrollPos >= window.innerWidth / 3) {
+        setScrolledOneThirdvw(true);
+      } else {
+        setScrolledOneThirdvw(false);
+      }
+      setPrevScrollPos(currentScrollPos);
+    };
+
+    window.addEventListener("scroll", changeShadow);
+
+    return () => window.removeEventListener("scroll", changeShadow);
+  }, [prevScrollPos]);
+
   return (
     <SessionProvider baseUrl={process.env.BASE_URL} session={session}>
       <NextNProgress options={{ showSpinner: false }} />
-      <div className="bg-slate-50">
+      <div
+        className={`transition-all duration-500 ${
+          router.pathname === "/" && !scrolledOneThirdvw
+            ? "bg-gradient-to-t from-black to-[#242828] text-slate-100"
+            : "bg-slate-50 text-slate-900"
+        }`}>
         <main
-          className={`flex min-h-screen h-fit flex-col items-center justify-between max-w-[1240px] mx-auto overflow-x-clip ${fontFam.className}`}>
+          className={`flex min-h-screen h-fit flex-col items-center justify-between mx-auto overflow-x-clip ${fontFam.className}`}>
           <Component {...pageProps} />
         </main>
       </div>

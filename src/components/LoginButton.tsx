@@ -20,7 +20,7 @@ export default function LoginButton() {
       <div className="relative w-fit h-fit ">
         <button
           onClick={() => setShowDropDown(!showDropdown)}
-          className="flex gap-2 hover:brightness-95 duration-75 bg-slate-50 px-1 py-1 rounded-md items-center w-12 h-12">
+          className="flex gap-2 hover:brightness-95 duration-75 bg-slate-50/10 px-1 py-1 rounded-md items-center w-12 h-12">
           {session.user?.image ? (
             <Image
               src={session.user?.image}
@@ -36,8 +36,8 @@ export default function LoginButton() {
 
         {/* Dropdown */}
         <div
-          className={`absolute bg-slate-50 py-2 px-[0.6rem] border-2 rounded-md right-0 w-auto ${
-            showDropdown ? "opacity-100 top-[100%]" : "opacity-0 top-[50%]"
+          className={`absolute bg-slate-50 py-2 px-[0.6rem] border-2 rounded-md right-0 w-auto delay-75 transition-all ${
+            showDropdown ? "opacity-100 scale-100 top-[100%] right-0" : "opacity-0 scale-0 -top-[100%] -right-[200%]"
           }`}
           onMouseLeave={() => {
             setShowDropDown(false);
