@@ -8,6 +8,7 @@ export default function MyDocument() {
         <meta charSet="UTF-8" />
 
         {/* SEO meta tags */}
+        <meta property="title" content="Kampus STEI-K 23" />
         <meta
           name="description"
           content="Jelajahi saluran informasi dan materi pembelajaran untuk mahasiswa STEI-K. Tetap terupdate dengan pengumuman terbaru, konten edukatif, dan sumber daya yang disesuaikan untuk mahasiswa teknik elektro dan ilmu komputer."
