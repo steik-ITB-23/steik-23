@@ -1,0 +1,5 @@
+User-agent: *
+Crawl-Delay: 5
+Disallow: /coming-soon
+
+Sitemap: https://steik23.netlify.app
