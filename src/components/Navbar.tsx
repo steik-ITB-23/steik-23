@@ -79,9 +79,6 @@ const Navbar = () => {
     setPrevScrollPos(currentScrollPos);
   }, []);
 
-  useEffect(() => {
-    console.log({ scrollDirection });
-  }, [scrollDirection]);
   return (
     <>
       <header
