@@ -17,7 +17,7 @@ export default function LoginButton() {
 
   if (session) {
     return (
-      <div className="relative w-fit h-fit ">
+      <div className="relative w-fit h-fit text-slate-900">
         <button
           onClick={() => setShowDropDown(!showDropdown)}
           className="flex gap-2 hover:brightness-95 duration-75 bg-slate-50/10 px-1 py-1 rounded-md items-center w-12 h-12">
