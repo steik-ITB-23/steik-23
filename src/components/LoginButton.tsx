@@ -88,7 +88,7 @@ export default function LoginButton() {
   }
   return (
     <>
-      <button onClick={() => signIn()} className="hover:brightness-95 bg-slate-50 px-2 py-1 rounded-md">
+      <button onClick={() => signIn()} className="hover:brightness-95 bg-slate-50 px-2 py-1 rounded-md text-slate-900">
         Sign in
       </button>
     </>
