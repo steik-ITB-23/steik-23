@@ -12,12 +12,12 @@ export default function Home() {
         <section className="h-[85vh] w-full flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 px-4">
           <div className="h-80 md:h-1/2 w-auto pt-6 z-10">
             <Image
-              src="/steik23.svg"
+              src="https://utfs.io/f/7648af4a-e902-454b-b937-b7433ef9aa2b-vbi1vd.svg"
               className="cursor-pointer object-contain mix-blend-multiply h-4 min-h-full w-auto py-2"
               height={30}
               width={30}
               alt="Logo STEI-K 23"
-              blurDataURL="https://steik23.netlify.app/steik23.svg"
+              blurDataURL="https://utfs.io/f/7648af4a-e902-454b-b937-b7433ef9aa2b-vbi1vd.svg"
               priority
             />
           </div>

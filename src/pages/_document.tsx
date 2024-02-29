@@ -21,7 +21,7 @@ export default function MyDocument() {
           property="og:description"
           content="Jelajahi saluran informasi dan materi pembelajaran untuk mahasiswa STEI-K. Tetap terupdate dengan pengumuman terbaru, konten edukatif, dan sumber daya yang disesuaikan untuk mahasiswa teknik elektro dan ilmu komputer."
         />
-        <meta property="og:image" content="https://steik23.netlify.app/steik23.svg" />
+        <meta property="og:image" content="https://utfs.io/f/7648af4a-e902-454b-b937-b7433ef9aa2b-vbi1vd.svg" />
         <meta property="og:url" content="https://steik23.netlify.app" />
         <meta property="og:type" content="website" />
 
@@ -32,7 +32,7 @@ export default function MyDocument() {
           name="twitter:description"
           content="Jelajahi saluran informasi dan materi pembelajaran untuk mahasiswa STEI-K. Tetap terupdate dengan pengumuman terbaru, konten edukatif, dan sumber daya yang disesuaikan untuk mahasiswa teknik elektro dan ilmu komputer."
         />
-        <meta name="twitter:image" content="https://steik23.netlify.app/steik23.svg" />
+        <meta name="twitter:image" content="https://utfs.io/f/7648af4a-e902-454b-b937-b7433ef9aa2b-vbi1vd.svg" />
 
         {/* JSON-LD for structured data */}
         <script type="application/ld+json">{`
@@ -41,7 +41,7 @@ export default function MyDocument() {
             "@type": "Organization",
             "name": "STEI-K 23 Campus",
             "url": "https://steik23.netlify.app",
-            "logo": "https://steik23.netlify.app/steik23.svg",
+            "logo": "https://utfs.io/f/7648af4a-e902-454b-b937-b7433ef9aa2b-vbi1vd.svg",
             "contactPoint": {
               "@type": "ContactPoint",
               "telephone": "088210145442",
@@ -52,10 +52,10 @@ export default function MyDocument() {
         `}</script>
 
         {/* Apple Touch Icon */}
-        <link rel="apple-touch-icon" sizes="180x180" href="https://steik23.netlify.app/steik23.svg" />
+        <link rel="apple-touch-icon" sizes="180x180" href="https://utfs.io/f/7648af4a-e902-454b-b937-b7433ef9aa2b-vbi1vd.svg" />
 
         {/* Add link to favicon */}
-        <link rel="icon" href="https://steik23.netlify.app/steik23.svg" />
+        <link rel="icon" href="https://utfs.io/f/7648af4a-e902-454b-b937-b7433ef9aa2b-vbi1vd.svg" />
       </Head>
       <body>
         <Main />

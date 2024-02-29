@@ -95,12 +95,12 @@ const Navbar = () => {
             <Link href="/" className="w-fit h-[4.5rem] flex items-center gap-2">
               <div className={`h-4 min-h-full py-2 ${scrolledOneThirdvw ? "scale-100 w-auto" : "w-0 scale-0"}`}>
                 <Image
-                  src="/steik23.svg"
+                  src="https://utfs.io/f/7648af4a-e902-454b-b937-b7433ef9aa2b-vbi1vd.svg"
                   className={`w-full h-full cursor-pointer object-contain mix-blend-multiply`}
                   height={30}
                   width={30}
                   alt="Logo STEI-K 23"
-                  blurDataURL="https://steik23.netlify.app/steik23.svg"
+                  blurDataURL="https://utfs.io/f/7648af4a-e902-454b-b937-b7433ef9aa2b-vbi1vd.svg"
                   priority
                 />
               </div>
