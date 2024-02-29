@@ -13,9 +13,12 @@ export default function App({ Component, pageProps: { session, ...pageProps } }:
   return (
     <SessionProvider baseUrl={process.env.BASE_URL} session={session}>
       <NextNProgress options={{ showSpinner: false }} />
-      <main className={`flex h-0 min-h-screen flex-col items-center justify-between lg:p-24 bg-slate-50 ${fontFam.className}`}>
-        <Component {...pageProps} />
-      </main>
+      <div className="bg-slate-50">
+        <main
+          className={`flex min-h-screen h-fit flex-col items-center justify-between max-w-[1240px] mx-auto overflow-x-clip ${fontFam.className}`}>
+          <Component {...pageProps} />
+        </main>
+      </div>
     </SessionProvider>
   );
 }
