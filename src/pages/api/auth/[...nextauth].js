@@ -20,6 +20,7 @@ export const authOptions = {
     }),
     // ...add more providers here
   ],
+  secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
     async signIn({ user }) {
       console.log("SignIn Callback:", user);
