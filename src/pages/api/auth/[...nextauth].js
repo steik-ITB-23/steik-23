@@ -31,9 +31,9 @@ export const authOptions = {
       return session;
     },
   },
-  pages: {
-    signIn: "/auth/signIn",
-  },
+  // pages: {
+  //   signIn: "/auth/signIn",
+  // },
 };
 
 const authHandler = NextAuth(authOptions);
