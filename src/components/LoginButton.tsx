@@ -1,11 +1,11 @@
 import { useSession, signIn, signOut } from "next-auth/react";
 import Image from "next/image";
 import { useState } from "react";
-import { FcBusinessman } from "react-icons/fc";
 import { BsEmojiSunglassesFill } from "react-icons/bs";
 import { FaHeart } from "react-icons/fa";
 import { IoBookmarkSharp } from "react-icons/io5";
 import Link from "next/link";
+import { MdPerson } from "react-icons/md";
 
 const MenuList = ({ children }: { children: React.ReactNode }) => (
   <li className="bg-slate-50 w-full hover:brightness-95 py-1 flex gap-3 items-center">{children}</li>
@@ -20,7 +20,7 @@ export default function LoginButton() {
       <div className="relative w-fit h-fit text-slate-900">
         <button
           onClick={() => setShowDropDown(!showDropdown)}
-          className="flex gap-2 hover:brightness-95 duration-75 bg-slate-50/10 px-1 py-1 rounded-md items-center w-12 h-12">
+          className="flex gap-2 hover:brightness-95 duration-75 bg-slate-50/10 p-2 items-center w-12 h-12 justify-center border-2 rounded-full border-slate-500">
           {session.user?.image ? (
             <Image
               src={session.user?.image}
@@ -30,7 +30,7 @@ export default function LoginButton() {
               className="object-contain"
             />
           ) : (
-            <FcBusinessman size={25} />
+            <MdPerson size={25} style={{ width: "100%", height: "100%" }} color="gray" />
           )}
         </button>
 
@@ -47,7 +47,7 @@ export default function LoginButton() {
               <p className="w-fit text-sm">{session?.user?.name}</p>
               <p className="text-xs font-thin">{session?.user?.email}</p>
             </div>
-            <div className="w-8 h-8">
+            <div className="w-8 h-8 flex items-center justify-center">
               {session.user?.image ? (
                 <Image
                   src={session.user?.image}
@@ -57,7 +57,7 @@ export default function LoginButton() {
                   className="object-contain"
                 />
               ) : (
-                <FcBusinessman size={25} />
+                <MdPerson size={25} style={{ width: "100%", height: "100%" }} />
               )}
             </div>
           </div>

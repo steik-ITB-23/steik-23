@@ -47,7 +47,7 @@ const Navbar = () => {
       } else if (prevScrollPos > currentScrollPos) {
         setScrollDirection(true);
         setShadow(false);
-        if (currentScrollPos >= window.innerWidth / 3) {
+        if (currentScrollPos >= window.innerWidth / 2.8) {
           setScrolledOneThirdvw(true);
         } else {
           setScrolledOneThirdvw(false);
@@ -70,7 +70,7 @@ const Navbar = () => {
       setScrollDirection(true);
     } else {
       setScrollDirection(true);
-      if (currentScrollPos >= window.innerWidth) {
+      if (currentScrollPos >= window.innerWidth / 2.8) {
         setScrolledOneThirdvw(true);
       } else {
         setScrolledOneThirdvw(false);
@@ -85,12 +85,15 @@ const Navbar = () => {
         className={`sticky left-0 top-0 z-50 flex w-full items-center px-0 duration-500 ease-in-out ${
           router.pathname === "/" ? "border-slate-700" : "border-slate-200"
         } ${scrollDirection ? "translate-y-0" : "-translate-y-24"} ${shadow ? "border-b-2" : "border-0 shadow-lg"} ${
-          router.pathname === "/" && !scrolledOneThirdvw ? "bg-[#181b1b] " : "bg-slate-50"
+          router.pathname === "/" && !scrolledOneThirdvw ? "bg-[#181b1b] " : "bg-slate-100"
         }`}>
         <div className="w-full px-2">
           <div className="relative flex items-center justify-between">
             <Link href="/" className="w-fit h-[4.5rem] flex items-center gap-2">
-              <div className={`h-4 min-h-full py-2 ${scrolledOneThirdvw ? "scale-100 w-auto" : "w-0 scale-0"}`}>
+              <div
+                className={`h-4 min-h-full py-2 transition-all duration-300 ${
+                  router.pathname === "/" && !scrolledOneThirdvw ? "w-0 scale-0" : "scale-100 w-auto"
+                }`}>
                 <Image
                   src="https://utfs.io/f/7648af4a-e902-454b-b937-b7433ef9aa2b-vbi1vd.svg"
                   className={`w-full h-full cursor-pointer object-contain mix-blend-multiply`}
