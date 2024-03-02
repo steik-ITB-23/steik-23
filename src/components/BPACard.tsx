@@ -3,9 +3,10 @@ import React from "react";
 
 export type memberBPA = {
   name: string;
+  position?: string;
   imgUrl: string;
 };
-const BPACard = ({ imgUrl, name }: { imgUrl: string; name: string }) => {
+const BPACard = ({ imgUrl, name, position }: { imgUrl: string; name: string; position?: string }) => {
   return (
     <div className="w-[23%] text-center shadow-md border-2 rounded-xl bg-slate-200">
       <Image
@@ -17,6 +18,7 @@ const BPACard = ({ imgUrl, name }: { imgUrl: string; name: string }) => {
         blurDataURL={imgUrl}
       />
       <p className="border-t-2 border-slate-300 px-2 py-3 font-bold">{name}</p>
+      {position && <p className="border-t-2 border-slate-300 px-2 py-3 font-bold">{position}</p>}
     </div>
   );
 };
