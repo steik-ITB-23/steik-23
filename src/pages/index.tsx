@@ -19,7 +19,7 @@ export default function Home() {
             <Image
               src="https://utfs.io/f/7648af4a-e902-454b-b937-b7433ef9aa2b-vbi1vd.svg"
               data-aos="fade-left"
-              className="cursor-pointer object-contain mix-blend-multiply h-4 min-h-full w-auto py-2 hover:brightness-110"
+              className="object-contain mix-blend-multiply h-4 min-h-full w-auto py-2"
               height={30}
               width={30}
               alt="Logo STEI-K 23"
