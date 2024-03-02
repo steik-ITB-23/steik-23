@@ -28,10 +28,21 @@ export default function Home() {
             />
           </div>
           <div className="w-fit space-y-2 md:space-y-4">
-            <h1 className="font-bold text-xl sm:text-3xl md:text-5xl animate-pulse">Syntax | STEI-K 23</h1>
+            <h1 className="font-bold text-xl sm:text-3xl md:text-5xl animate-pulse">
+              Syntax | STEI-K 23
+            </h1>
             <h2 className="text-lg sm:text-2xl italic">
               <TypeAnimation
-                sequence={["Code", 500, "Code, Create", 500, "Code, Create, Connect!", 1000, "", 0]}
+                sequence={[
+                  "Code",
+                  500,
+                  "Code, Create",
+                  500,
+                  "Code, Create, Connect!",
+                  1000,
+                  "",
+                  0,
+                ]}
                 wrapper="span"
                 speed={50}
                 style={{ fontSize: "1em", display: "inline-block" }}
