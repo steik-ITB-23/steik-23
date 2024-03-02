@@ -12,7 +12,6 @@
     "format": "prettier --write . && eslint . --fix",
     "format:check": "prettier --check .",
     "format:write": "prettier --write .",
-    "prepare": "husky install",
     "lint-staged": "lint-staged",
     "typecheck": "tsc --noEmit",
     "studio": "prisma studio"
