@@ -1,4 +1,7 @@
-import type { GetServerSidePropsContext, InferGetServerSidePropsType } from "next";
+import type {
+  GetServerSidePropsContext,
+  InferGetServerSidePropsType,
+} from "next";
 import { getProviders, signIn } from "next-auth/react";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "../../api/auth/[...nextauth]";
@@ -11,15 +14,22 @@ const ProviderIcon = ({ index }: { index: number }) => {
   return <p>svg</p>;
 };
 
-export default function SignIn({ providers }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+export default function SignIn({
+  providers,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
   return (
     <main className="w-screen h-screen flex justify-center items-center bg-slate-100">
       <div className="relative py-3 max-w-fit sm:mx-auto">
         <div className="relative px-4 py-10 bg-black mx-8 md:mx-0 shadow rounded-3xl sm:p-10">
           <div className="max-w-md mx-auto text-white">
-            <h1 className="text-center font-bold text-2xl animate-pulse">Syntax Login</h1>
+            <h1 className="text-center font-bold text-2xl animate-pulse">
+              Syntax Login
+            </h1>
             <div className="mt-5 mb-4">
-              <label className="font-semibold text-sm text-gray-400 pb-1 block" htmlFor="login">
+              <label
+                className="font-semibold text-sm text-gray-400 pb-1 block"
+                htmlFor="login"
+              >
                 E-mail
               </label>
               <input
@@ -27,7 +37,10 @@ export default function SignIn({ providers }: InferGetServerSidePropsType<typeof
                 type="text"
                 id="login"
               />
-              <label className="font-semibold text-sm text-gray-400 pb-1 block" htmlFor="password">
+              <label
+                className="font-semibold text-sm text-gray-400 pb-1 block"
+                htmlFor="password"
+              >
                 Password
               </label>
               <input
@@ -41,7 +54,8 @@ export default function SignIn({ providers }: InferGetServerSidePropsType<typeof
                 <div key={provider.name}>
                   <button
                     className="flex items-center justify-center py-2 px-20 bg-white hover:bg-gray-200 focus:ring-blue-500 focus:ring-offset-blue-200 text-gray-700 w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg mt-4"
-                    onClick={() => signIn(provider.id)}>
+                    onClick={() => signIn(provider.id)}
+                  >
                     <ProviderIcon index={index} />
                     <span className="ml-8">Sign in with {provider.name}</span>
                   </button>
@@ -51,7 +65,8 @@ export default function SignIn({ providers }: InferGetServerSidePropsType<typeof
             <div className="mt-5">
               <button
                 className="py-2 px-4 bg-blue-600 hover:bg-blue-700 focus:ring-blue-500 focus:ring-offset-blue-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg"
-                type="submit">
+                type="submit"
+              >
                 Log in
               </button>
             </div>
