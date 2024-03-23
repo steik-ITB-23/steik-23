@@ -24,6 +24,17 @@
   background-color: #d3d5d7;
 }
 
+.font-poppins {
+  font-family: var(--font-poppins);
+}
+
+.font-inter {
+  font-family: var(--font-inter);
+}
+.font-outfit {
+  font-family: var(--font-outfit);
+}
+
 /* loader */
 .loader {
   width: fit-content;

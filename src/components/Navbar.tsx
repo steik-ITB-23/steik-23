@@ -14,7 +14,7 @@ const NavListDesktop = ({ href, routerPathname, lable }: { href: string; routerP
       className={
         routerPathname === href ? "border-b-2 border-gray-400" : "hover:brightness-110 hover:border-b-2 border-gray-400"
       }>
-      <span className="text-[16px]">{lable}</span>
+      <span className="text-[16px] lg:text-[18px] font-outfit tracking-wider">{lable}</span>
     </p>
   </Link>
 );
@@ -24,7 +24,6 @@ const Navbar = () => {
 
   const [scrollDirection, setScrollDirection] = useState(true);
   const [prevScrollPos, setPrevScrollPos] = useState(0);
-  const [shadow, setShadow] = useState(false);
   const [scrolledOneThirdvw, setScrolledOneThirdvw] = useState(false);
   const [navMobile, setNavMobile] = useState(false);
 
@@ -35,7 +34,7 @@ const Navbar = () => {
   const getTextColor = () => {
     return router.pathname === "/" && !scrolledOneThirdvw
       ? "text-gray-200 hover:text-white"
-      : "text-gray-900 hover:text-gray-700";
+      : "text-[#F1F2F8] hover:brightness-110";
   };
 
   useEffect(() => {
@@ -43,10 +42,8 @@ const Navbar = () => {
       const currentScrollPos = window.scrollY;
       if (currentScrollPos === 0) {
         setScrollDirection(true);
-        setShadow(false);
       } else if (prevScrollPos > currentScrollPos) {
         setScrollDirection(true);
-        setShadow(true);
         if (currentScrollPos >= window.innerWidth / 2.8) {
           setScrolledOneThirdvw(true);
         } else {
@@ -54,7 +51,6 @@ const Navbar = () => {
         }
       } else {
         setScrollDirection(false);
-        setShadow(false);
       }
       setPrevScrollPos(currentScrollPos);
     };
@@ -65,33 +61,22 @@ const Navbar = () => {
   }, [prevScrollPos]);
 
   useEffect(() => {
-    const currentScrollPos = window.scrollY;
     setScrollDirection(true);
-    if (currentScrollPos === 0) {
-      setShadow(false);
-    } else {
-      setShadow(true);
-    }
   }, []);
 
   return (
     <>
       <header
-        className={`sticky left-0 top-0 z-50 flex w-full items-center px-0 duration-500 ease-in-out ${
-          router.pathname === "/" ? "border-slate-700" : "border-slate-200"
-        } ${scrollDirection ? "translate-y-0" : "-translate-y-24"} ${shadow ? "border-0 shadow-lg" : "border-b-2"} ${
-          router.pathname === "/" && !scrolledOneThirdvw ? "bg-[#181b1b] " : "bg-slate-100"
+        className={`sticky left-0 top-0 z-50 h-[5.2rem] flex w-full items-center px-0 duration-500 ease-in-out ${scrollDirection ? "translate-y-0" : "-translate-y-24"} ${
+          router.pathname === "/" && !scrolledOneThirdvw ? "bg-none" : "bg-[#101351]"
         }`}>
-        <div className="w-full px-2">
+        <div className="w-full px-2 mx-auto max-w-[1480px]">
           <div className="relative flex items-center justify-between">
-            <Link href="/" className="w-fit h-[4.5rem] flex items-center gap-2">
-              <div
-                className={`h-4 min-h-full py-2 transition-all duration-300 ${
-                  router.pathname === "/" && !scrolledOneThirdvw ? "w-0 scale-0" : "scale-100 w-auto"
-                }`}>
+            <Link href="/" className="w-fit h-[5rem] flex items-center gap-4">
+              <div className={`h-4 min-h-full py-2 transition-all duration-300`}>
                 <Image
                   src="https://utfs.io/f/7648af4a-e902-454b-b937-b7433ef9aa2b-vbi1vd.svg"
-                  className={`w-full h-full cursor-pointer object-contain mix-blend-multiply`}
+                  className={`w-full h-full cursor-pointer object-contain`}
                   height={30}
                   width={30}
                   alt="Logo STEI-K 23"
@@ -99,22 +84,36 @@ const Navbar = () => {
                   priority
                 />
               </div>
-              <h1 className={`font-extrabold text-4xl duration-100 ease-in tracking-wider ${getTextColor()}`}>Syntax</h1>
+              <div className="flex flex-col justify-center gap-0 pt-1">
+                <h1
+                  className={`font-extrabold uppercase text-2xl duration-100 ease-in tracking-wider font-outfit h-fit leading-4 ${getTextColor()}`}>
+                  Syntax
+                </h1>
+                <p
+                  className={`text-[16px] lg:text-lg duration-100 ease-in tracking-wider font-outfit leading-6 ${getTextColor()}`}>
+                  code, create, connect
+                </p>
+              </div>
             </Link>
 
             {/* Navigation list */}
-            <div className="flex md:gap-4 items-center">
+            <div className="flex gap-2 sm:gap-4 md:gap-6 lg:gap-10 items-center">
               {/* Desktop navigation list */}
-              <div className={`flex gap-0 py-1 text-[#6B778C] md:gap-4 lg:py-5 xl:gap-6 items-center ${getTextColor()}`}>
+              <div
+                className={`flex gap-0 py-1 text-[#6B778C] md:gap-6 lg:gap-8 lg:py-5 xl:gap-12 uppercase items-center ${getTextColor()}`}>
                 <NavListDesktop href="/" routerPathname={router.pathname} lable="Home" />
                 <NavListDesktop href="/tentang-bpa" routerPathname={router.pathname} lable="BPA" />
                 <NavListDesktop href="/akademik" routerPathname={router.pathname} lable="Akademik" />
-                <NavListDesktop href="/acara-kemahasiswaan" routerPathname={router.pathname} lable="Acara Kemahasiswaan" />
+                <NavListDesktop href="/acara-kemahasiswaan" routerPathname={router.pathname} lable="Acara" />
               </div>
 
               {/* Mobile Nav Button */}
-              <LoginButton />
-              <button className="block md:hidden hover:brightness-95 p-2 rounded-md ml-2" onClick={() => handleNav(true)}>
+              <div className="lg:pl-2">
+                <LoginButton />
+              </div>
+              <button
+                className="block md:hidden hover:brightness-95 p-2 rounded-md ml-2 text-[#6B778C]"
+                onClick={() => handleNav(true)}>
                 <RxHamburgerMenu size={30} />
               </button>
 

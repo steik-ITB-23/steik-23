@@ -88,8 +88,10 @@ export default function LoginButton() {
   }
   return (
     <>
-      <button onClick={() => signIn()} className="hover:brightness-95 border-2 bg-[#fafafa] px-2 py-1 rounded-md text-slate-900">
-        Sign in
+      <button
+        onClick={() => signIn()}
+        className="hover:brightness-95 border-2 border-[#F1F2F8] text-[#F1F2F8] px-3 py-2 rounded-full font-outfit tracking-wider text-[14px] md:text-[16px] lg:text-[18px]">
+        LOGIN
       </button>
     </>
   );

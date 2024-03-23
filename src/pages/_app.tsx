@@ -1,16 +1,27 @@
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import NextNProgress from "nextjs-progressbar";
-import { Poppins } from "next/font/google";
+import { Inter, Outfit, Poppins } from "next/font/google";
 import { SessionProvider } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import "aos/dist/aos.css";
 import AOS from "aos";
 
-const fontFam = Poppins({
+const poppins = Poppins({
   weight: ["200", "300", "400", "500", "600", "700", "800", "900"],
   subsets: ["latin"],
+  variable: "--font-poppins",
+});
+const inter = Inter({
+  weight: ["200", "300", "400", "500", "600", "700", "800", "900"],
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
+const outfit = Outfit({
+  weight: ["200", "300", "400", "500", "600", "700", "800", "900"],
+  subsets: ["latin"],
+  variable: "--font-outfit",
 });
 
 export default function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
@@ -63,7 +74,8 @@ export default function App({ Component, pageProps: { session, ...pageProps } }:
             ? "bg-gradient-to-t from-black to-[#242828] text-slate-100"
             : "bg-slate-100 text-slate-900"
         }`}>
-        <main className={`flex min-h-screen flex-col items-center justify-between mx-auto overflow-x-clip ${fontFam.className}`}>
+        <main
+          className={`flex min-h-screen flex-col items-center justify-between mx-auto overflow-x-clip ${poppins.variable} ${inter.variable} ${outfit.variable}`}>
           <Component {...pageProps} />
         </main>
       </div>
