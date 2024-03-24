@@ -20,9 +20,9 @@ const handleSubmit = (e: React.FormEvent) => {
 };
 
 return (
-    <div className='border-2 border-black rounded-[24px] w-[640px]'>
+    <div className='border-2 border-black rounded-[24px] w-full sm:w-[640px]'>
         <form onSubmit={handleSubmit} className="max-w-full m-10">
-            <h1 className='font-bold text-[32px] mb-4'>Form Feedback/Saran</h1>
+            <h1 className='font-bold text-[24px] sm:text-[32px] mb-4'>Form Feedback/Saran</h1>
             {!isAnonymous && (
             <div className="mb-4 relative">
                 <label className="bg-white px-[6px] absolute top-0 left-3 transition-all -translate-y-[10px] text-sm text-[#666666]">Nama Pengirim</label>
