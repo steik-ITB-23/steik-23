@@ -7,15 +7,10 @@ const BPAbutton = ({ data }: { data: bpaType }) => {
   return (
     <Link
       href={`/tentang-bpa/#${getSlug(data.name)}`}
-      className="border-2 rounded-full border-slate-300 h-fit px-1 py-0.5"
-    >
+      className="border-2 rounded-full border-[#101351] md:border-white h-fit px-1 py-0.5">
       <p className="button">
-        <span className="text-slate-500">{data.name}</span>{" "}
-        {data.members.length > 1 && (
-          <span className="font-bold text-slate-700">
-            {data.members.length}
-          </span>
-        )}
+        <span className="text-[#101351] md:text-white">{data.name}</span>{" "}
+        {data.members.length > 1 && <span className="font-bold text-[#79B5EE]">{data.members.length}</span>}
       </p>
     </Link>
   );
