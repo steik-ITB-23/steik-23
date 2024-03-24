@@ -1,23 +1,27 @@
-import React, { useState } from 'react';
-import Button from "@/components/Button"
+import React, { useState } from "react";
+import Button from "@/components/Button";
 
 interface FeedbackFormProps {
-onSubmit: (feedback: string, isAnonymous: boolean, senderName?: string) => void;
+  onSubmit: (
+    feedback: string,
+    isAnonymous: boolean,
+    senderName?: string,
+  ) => void;
 }
 
 const FeedbackForm: React.FC<FeedbackFormProps> = ({ onSubmit }) => {
-const [feedback, setFeedback] = useState('');
-const [isAnonymous, setIsAnonymous] = useState(false);
-const [senderName, setSenderName] = useState('');
+  const [feedback, setFeedback] = useState("");
+  const [isAnonymous, setIsAnonymous] = useState(false);
+  const [senderName, setSenderName] = useState("");
 
-const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onSubmit(feedback, isAnonymous, isAnonymous ? undefined : senderName);
     // Reset form fields after submission
-    setFeedback('');
+    setFeedback("");
     setIsAnonymous(false);
-    setSenderName('');
-};
+    setSenderName("");
+  };
 
 return (
     <div className='border-2 border-black rounded-[24px] w-full sm:w-[640px]'>
@@ -38,28 +42,32 @@ return (
             
         )}
         <div className="mb-2 relative">
-            <label className="bg-white px-[6px] absolute top-0 left-3 transition-all -translate-y-[10px] text-sm text-[#666666]">Feedback/Saran</label>
-            <textarea
+          <label className="bg-white px-[6px] absolute top-0 left-3 transition-all -translate-y-[10px] text-sm text-[#666666]">
+            Feedback/Saran
+          </label>
+          <textarea
             className="border-2 border-[#666666] rounded-lg px-3 py-2 w-full focus:outline-none focus:border-black"
             rows={4}
             value={feedback}
             onChange={(e) => setFeedback(e.target.value)}
             required
-            ></textarea>
+          ></textarea>
         </div>
         <div className="mb-4 flex items-center">
-            <input
+          <input
             type="checkbox"
             className="mr-2"
             checked={isAnonymous}
             onChange={(e) => setIsAnonymous(e.target.checked)}
-            />
-            <label className="text-sm">Anonymous</label>
+          />
+          <label className="text-sm">Anonymous</label>
         </div>
-        <Button type='submit' className='w-full bg-[#101351]'>Submit</Button>
-        </form>
+        <Button type="submit" className="w-full bg-[#101351]">
+          Submit
+        </Button>
+      </form>
     </div>
-);
+  );
 };
 
 export default FeedbackForm;
