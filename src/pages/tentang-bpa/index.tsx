@@ -16,7 +16,7 @@ const TentangBpa = () => {
         <title>BPA | STEI-K 23</title>
       </Head>
       <Navbar />
-      <section className="flex-grow flex flex-col md:flex-row items-center justify-center w-full overflow-x-clip relative h-fit">
+      <section className="flex-grow flex flex-col md:flex-row items-center justify-center w-full overflow-x-clip relative h-fit font-poppins">
         {/* nav */}
         <section className="h-full w-full flex flex-col items-start justify-start gap-2 px-0 md:px-4 self-stretch border-r-2 md:w-[210px]">
           <div className="block md:fixed top-0 left-0 px-4 md:h-[100svh] md:shadow-lg overflow-y-auto bg-white md:bg-[#101351]">

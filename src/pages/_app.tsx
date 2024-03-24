@@ -12,16 +12,22 @@ const poppins = Poppins({
   weight: ["200", "300", "400", "500", "600", "700", "800", "900"],
   subsets: ["latin"],
   variable: "--font-poppins",
+  display: "swap",
+  adjustFontFallback: false,
 });
 const inter = Inter({
   weight: ["200", "300", "400", "500", "600", "700", "800", "900"],
   subsets: ["latin"],
   variable: "--font-inter",
+  display: "swap",
+  adjustFontFallback: false,
 });
 const outfit = Outfit({
   weight: ["200", "300", "400", "500", "600", "700", "800", "900"],
   subsets: ["latin"],
   variable: "--font-outfit",
+  display: "swap",
+  adjustFontFallback: false,
 });
 
 export default function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
@@ -75,7 +81,7 @@ export default function App({ Component, pageProps: { session, ...pageProps } }:
             : "bg-white text-slate-900"
         }`}>
         <main
-          className={`flex min-h-screen flex-col items-center justify-between mx-auto overflow-x-clip font-poppins ${poppins.variable} ${inter.variable} ${outfit.variable}`}>
+          className={`flex min-h-screen flex-col items-center justify-between mx-auto overflow-x-clip ${poppins.variable} ${inter.variable} ${outfit.variable}`}>
           <Component {...pageProps} />
         </main>
       </div>
