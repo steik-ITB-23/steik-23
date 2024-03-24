@@ -44,14 +44,14 @@ const BPAInfo = ({ data }: { data: bpaType }) => {
           </div>
         </>
       ) : (
-        <div className="flex flex-col sm:flex-row gap-2 w-full py-4">
+        <div className="flex flex-col lg:flex-row gap-2 w-full py-4">
           <div className="flex gap-4 flex-wrap w-full sm:w-fit flex-grow-0 justify-center sm:justify-start">
             {data.members.map((member, idx) => (
               <BPACard key={`${idx}-${member}-${data.name}`} name={member.name} imgUrl={member.imgUrl} hideName={true} />
             ))}
           </div>
-          <p className="py-2">
-            <strong>{data.members[0].name} </strong>
+          <p className="py-2 font-light">
+            <strong className="font-bold">{data.members[0].name} </strong>
             {data.jobDesc}
           </p>
         </div>

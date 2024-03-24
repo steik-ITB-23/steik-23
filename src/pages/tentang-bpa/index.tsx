@@ -44,7 +44,10 @@ const TentangBpa = () => {
               <div className="w-full md:w-[200px] h-fit space-y-1 hidden md:block">
                 <h2 className="text-sm font-light uppercase tracking-wider md:pt-4 text-white">Petinggi</h2>
                 {bpaListGeneral.map((bpa) => (
-                  <Link href={`/tentang-bpa/#${getSlug(bpa.name)}`} key={bpa.name} className="text-lg flex gap-2 items-center">
+                  <Link
+                    href={`/tentang-bpa/#${getSlug(bpa.name)}`}
+                    key={bpa.name}
+                    className="text-lg flex gap-2 items-center hover:bg-slate-50/50 ease-in duration-75">
                     <IoMdPerson color="white" />
                     <p className="text-[16px] text-white hover:brightness-95 rounded-md w-full py-1">{bpa.name}</p>
                   </Link>

@@ -9,7 +9,7 @@ export type memberBPA = {
 };
 const BPACard = ({ imgUrl, name, position, hideName }: memberBPA) => {
   return (
-    <div className="w-[38%] sm:w-[18%] min-w-[116px] max-w-[200px] h-auto text-center drop-shadow-xl border-4 rounded-xl flex flex-col bg-slate-50 border-slate-50 hover:scale-110 duration-150 ease-in hover:shadow-lg hover:font-semibold flex-grow-0 aspect-[3/4]">
+    <div className="w-[38%] sm:w-[18%] min-w-[200px] max-w-[200px] h-auto text-center drop-shadow-xl border-4 rounded-xl flex flex-col bg-slate-50 border-slate-50 hover:scale-110 duration-150 ease-in hover:shadow-lg hover:font-semibold flex-grow-0 aspect-[3/4]">
       <Image
         src={imgUrl || "https://utfs.io/f/7648af4a-e902-454b-b937-b7433ef9aa2b-vbi1vd.svg"}
         alt={name}
