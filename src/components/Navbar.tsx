@@ -1,8 +1,9 @@
+"use client";
+
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { useRouter } from "next/router";
-import LoginButton from "./LoginButton";
+import { usePathname } from "next/navigation";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { GoHome, GoCopilot } from "react-icons/go";
 import { IoMdBook } from "react-icons/io";
@@ -19,8 +20,8 @@ const NavListDesktop = ({ href, routerPathname, lable }: { href: string; routerP
   </Link>
 );
 
-const Navbar = () => {
-  const router = useRouter();
+const Navbar = ({ mainColor = "#F1F2F8" }: { mainColor?: string }) => {
+  const pathName = usePathname();
 
   const [scrollDirection, setScrollDirection] = useState(true);
   const [prevScrollPos, setPrevScrollPos] = useState(0);
@@ -32,9 +33,9 @@ const Navbar = () => {
   };
 
   const getTextColor = () => {
-    return router.pathname === "/" && !scrolledOneThirdvw
-      ? "text-gray-200 hover:text-white"
-      : "text-[#F1F2F8] hover:brightness-110";
+    if (pathName === "/" && !scrolledOneThirdvw) return "text-gray-200 hover:text-white";
+    if (mainColor === "#F1F2F8") return "text-black hover:brightness-110";
+    return "text-[#F1F2F8] hover:brightness-110";
   };
 
   useEffect(() => {
@@ -67,9 +68,9 @@ const Navbar = () => {
   return (
     <>
       <header
-        className={`sticky left-0 top-0 z-50 h-[5.2rem] flex w-full items-center px-0 duration-500 ease-in-out ${scrollDirection ? "translate-y-0" : "-translate-y-24"} ${
-          router.pathname === "/" && !scrolledOneThirdvw ? "bg-none" : "bg-[#101351]"
-        }`}>
+        className={`sticky left-0 top-0 z-50 h-[5.2rem] flex w-full items-center px-0 duration-500 ease-in-out ${
+          scrollDirection ? "translate-y-0" : "-translate-y-24"
+        } ${pathName === "/" && !scrolledOneThirdvw ? "bg-none" : "bg-[" + mainColor + "]"}`}>
         <div className="w-full px-2 mx-auto">
           <div className="relative flex items-center justify-between">
             <Link href="/" className="w-fit h-[5rem] flex items-center gap-4 pl-4">
@@ -101,15 +102,21 @@ const Navbar = () => {
               {/* Desktop navigation list */}
               <div
                 className={`flex gap-0 py-1 text-[#6B778C] md:gap-6 lg:gap-8 lg:py-5 xl:gap-12 uppercase items-center ${getTextColor()}`}>
-                <NavListDesktop href="/" routerPathname={router.pathname} lable="Home" />
-                <NavListDesktop href="/tentang-bpa" routerPathname={router.pathname} lable="BPA" />
-                <NavListDesktop href="/akademik" routerPathname={router.pathname} lable="Akademik" />
-                <NavListDesktop href="/acara-kemahasiswaan" routerPathname={router.pathname} lable="Acara" />
+                <NavListDesktop href="/" routerPathname={pathName} lable="Home" />
+                <NavListDesktop href="/tentang-bpa" routerPathname={pathName} lable="BPA" />
+                <NavListDesktop href="/akademik" routerPathname={pathName} lable="Akademik" />
+                <NavListDesktop href="/acara-kemahasiswaan" routerPathname={pathName} lable="Acara" />
               </div>
 
               {/* Mobile Nav Button */}
               <div className="lg:pl-2">
-                <LoginButton />
+                <Link
+                  href="/auth/sign-in"
+                  className={`rounded-full  px-4 py-1.5 border-2 ${
+                    pathName === "/" && !scrolledOneThirdvw ? "text-white border-white" : "text-slate-800 border-slate-800"
+                  }`}>
+                  LOGIN
+                </Link>
               </div>
               <button
                 className="block md:hidden hover:brightness-95 p-2 rounded-md ml-2 text-[#6B778C]"

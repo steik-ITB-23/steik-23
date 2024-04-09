@@ -1,7 +1,8 @@
+"use client";
+
 import BPAInfo from "@/components/BPAinfo";
 import BPAbutton from "@/components/BPAbutton";
 import Navbar from "@/components/Navbar";
-import Head from "next/head";
 import Link from "next/link";
 import React from "react";
 import { bpaListExternal, bpaListGeneral, bpaListInternal } from "@/assets/data/bpaList";
@@ -12,11 +13,8 @@ import { getSlug } from "@/lib/utils/stringManipulation";
 const TentangBpa = () => {
   return (
     <>
-      <Head>
-        <title>BPA | STEI-K 23</title>
-      </Head>
-      <Navbar />
-      <section className="flex-grow flex flex-col md:flex-row items-center justify-center w-full overflow-x-clip relative h-fit font-poppins">
+      <Navbar mainColor="#101351" />
+      <section className="flex-grow flex flex-col md:flex-row items-center justify-center w-full overflow-x-clip relative h-fit font-poppins text-black">
         {/* nav */}
         <section className="h-full w-full flex flex-col items-start justify-start gap-2 px-0 md:px-4 self-stretch border-r-2 md:w-[210px]">
           <div className="block md:fixed top-0 left-0 px-4 md:h-[100svh] md:shadow-lg overflow-y-auto bg-white md:bg-[#101351]">

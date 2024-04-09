@@ -1,63 +1,45 @@
+"use client";
 import Navbar from "@/components/Navbar";
-import ComingSoon from "@/components/ComingSoon";
-import Image from "next/image";
-import ThreeScene from "@/components/ThreeScene";
-import { TypeAnimation } from "react-type-animation";
-import Head from "next/head";
+import BPASteik23 from "@/sections/home/BPASteik23";
+import ProgramKami from "@/sections/home/ProgramKami";
+import SliderHome from "@/sections/home/SliderHome";
+import UpcomingEvents from "@/sections/home/UpcomingEvents";
+import { useEffect } from "react";
+import AOS from "aos";
 
 export default function Home() {
-  return (
-    <>
-      <Head>
-        <title>ITB | STEI-K 23</title>
-      </Head>
-      <Navbar />
-      <section className="flex-grow flex flex-col items-center justify-center w-full overflow-x-clip max-w-[1240px]">
-        {/* Section 1 */}
-        <section className="h-[82vh] w-full flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 px-4">
-          <div className="h-80 md:h-1/2 w-auto pt-2 z-10">
-            <Image
-              src="https://utfs.io/f/7648af4a-e902-454b-b937-b7433ef9aa2b-vbi1vd.svg"
-              data-aos="fade-left"
-              className="object-contain mix-blend-multiply h-4 min-h-full w-auto py-2"
-              height={30}
-              width={30}
-              alt="Logo STEI-K 23"
-              blurDataURL="https://utfs.io/f/7648af4a-e902-454b-b937-b7433ef9aa2b-vbi1vd.svg"
-              priority
-            />
-          </div>
-          <div className="w-fit space-y-2 md:space-y-4">
-            <h1 className="font-bold text-xl sm:text-3xl md:text-5xl animate-pulse">Syntax | STEI-K 23</h1>
-            <h2 className="text-lg sm:text-2xl italic">
-              <TypeAnimation
-                sequence={["Code", 500, "Code, Create", 500, "Code, Create, Connect!", 1000, "", 0]}
-                wrapper="span"
-                speed={50}
-                style={{ fontSize: "1em", display: "inline-block" }}
-                repeat={Infinity}
-              />{" "}
-            </h2>
-            <p>Website masih dalam pembuatan, mohon bersabar</p>
-            <div className="pt-4" data-aos="zoom-in-right">
-              <p>Contact:</p>
-              <ul className="list-disc pl-6">
-                <li>
-                  <p>@yonatan_nyo (instagram)</p>
-                </li>
-                <li>
-                  <p>@yonatanedwardn (line)</p>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </section>
+  useEffect(() => {
+    AOS.init();
+  }, []);
 
-        {/* Section 2 */}
-        <section className="h-0 min-h-screen w-full flex items-center justify-center md:rounded-t-[15%] bg-slate-100 px-4">
-          <ComingSoon showKembali={false} />
-        </section>
+  return (
+    <div className="min-h-screen w-screen">
+      <div className="fixed top-0 left-0 w-full z-50">
+        <Navbar mainColor="#F1F2F8" />
+      </div>
+      <section className="absolute top-0 left-0 flex-grow flex flex-col items-center justify-center w-full overflow-x-clip bg-[#F1F2F8]">
+        <SliderHome />
+
+        <div className="px-4 md:px-6 pt-20 pb-10 w-full h-fit font-outfit">
+          <div
+            className="p-2 text-center space-y-8 py-10 w-full max-w-[1200px] mx-auto rounded-lg drop-shadow-xl bg-[#E9EBF8] hover:drop-shadow-2xl border-[1px] border-slate-400"
+            style={{ padding: "20px" }}>
+            <p className="text-lg md:text-xl xl:text-2xl">
+              Selamat datang di website SYNTAX! Kami menyediakan bebagai tools untuk memudahkan penyaluran informasi dari dan
+              kepada massa STEI-K. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+              labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+              ea commodo consequat.
+            </p>
+            <p className="text-lg md:text-xl xl:text-2xl">-- TIM WEBSITE STEI-K --</p>
+          </div>
+        </div>
+
+        <UpcomingEvents />
+
+        <ProgramKami />
+
+        <BPASteik23 />
       </section>
-    </>
+    </div>
   );
 }

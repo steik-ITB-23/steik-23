@@ -26,7 +26,7 @@ const BPAInfo = ({ data }: { data: bpaType }) => {
   };
 
   return (
-    <div className="w-full pb-8 py-2" id={getSlug(data.name)} data-aos="fade-right">
+    <div className="w-full pb-8 py-2" id={getSlug(data.name)}>
       <div className="flex w-full border-b-2 gap-2 items-center">
         <h2 className="font-bold text-xl">{data.name}</h2>
         <span className="text-xl font-bold text-blue-600 cursor-pointer hover:text-blue-500" onClick={handleCopyLink}>
