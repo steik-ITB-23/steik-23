@@ -20,7 +20,7 @@ const NavListDesktop = ({ href, routerPathname, lable }: { href: string; routerP
   </Link>
 );
 
-const Navbar = ({ mainColor = "#F1F2F8" }: { mainColor?: string }) => {
+const Navbar = ({ mainColor = "#F1F2F8", mainTextColor }: { mainColor?: string; mainTextColor?: string }) => {
   const pathName = usePathname();
 
   const [scrollDirection, setScrollDirection] = useState(true);
@@ -35,6 +35,7 @@ const Navbar = ({ mainColor = "#F1F2F8" }: { mainColor?: string }) => {
   const getTextColor = () => {
     if (pathName === "/" && !scrolledOneThirdvw) return "text-gray-200 hover:text-white";
     if (mainColor === "#F1F2F8") return "text-black hover:brightness-110";
+    if (mainTextColor) return `${mainTextColor} hover:brightness-110`;
     return "text-[#F1F2F8] hover:brightness-110";
   };
 
@@ -68,7 +69,7 @@ const Navbar = ({ mainColor = "#F1F2F8" }: { mainColor?: string }) => {
   return (
     <>
       <header
-        className={`sticky left-0 top-0 z-50 h-[5.2rem] flex w-full items-center px-0 duration-500 ease-in-out ${
+        className={`sticky left-0 top-0 z-50 h-[5.2rem] flex w-full items-center px-0 duration-500 ease-in-out shadow-md ${
           scrollDirection ? "translate-y-0" : "-translate-y-24"
         } ${pathName === "/" && !scrolledOneThirdvw ? "bg-none" : "bg-[" + mainColor + "]"}`}>
         <div className="w-full px-2 mx-auto">
@@ -108,16 +109,17 @@ const Navbar = ({ mainColor = "#F1F2F8" }: { mainColor?: string }) => {
                 <NavListDesktop href="/acara-kemahasiswaan" routerPathname={pathName} lable="Acara" />
               </div>
 
-              {/* Mobile Nav Button */}
-              <div className="lg:pl-2">
+              {/* <div className="lg:pl-2">
                 <Link
                   href="/auth/sign-in"
                   className={`rounded-full  px-4 py-1.5 border-2 ${
-                    pathName === "/" && !scrolledOneThirdvw ? "text-white border-white" : "text-slate-800 border-slate-800"
+                    pathName === "/" && scrolledOneThirdvw ? "text-slate-800 border-slate-800" : "text-white border-white"
                   }`}>
                   LOGIN
                 </Link>
-              </div>
+              </div> */}
+
+              {/* Mobile Nav Button */}
               <button
                 className="block md:hidden hover:brightness-95 p-2 rounded-md ml-2 text-[#6B778C]"
                 onClick={() => handleNav(true)}>

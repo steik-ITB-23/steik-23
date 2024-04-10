@@ -44,7 +44,7 @@ const BPAInfo = ({ data }: { data: bpaType }) => {
           </div>
         </>
       ) : (
-        <div className="flex flex-col lg:flex-row gap-2 w-full py-4">
+        <div className="flex flex-col lg:flex-row gap-2 w-full py-4 items-center">
           <div className="flex gap-4 flex-wrap w-full sm:w-fit flex-grow-0 justify-center sm:justify-start">
             {data.members.map((member, idx) => (
               <BPACard key={`${idx}-${member}-${data.name}`} name={member.name} imgUrl={member.imgUrl} hideName={true} />

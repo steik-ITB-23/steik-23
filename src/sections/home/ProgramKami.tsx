@@ -5,7 +5,8 @@ import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
-import { Navigation, Autoplay } from "swiper/modules";
+import "swiper/css/pagination";
+import { Navigation, Autoplay, Pagination } from "swiper/modules";
 import Image from "next/image";
 
 async function getData() {
@@ -56,12 +57,15 @@ const ProgramKami = () => {
   return (
     <section className="font-inter w-full" data-aos="fade-up">
       <h1 className="text-center font-bold text-2xl lg:text-4xl xl:text-5xl pt-20">Program Kami | STEI-K 23</h1>
-      <div className="w-full flex flex-row flex-wrap px-10 justify-center py-10 max-w-[1600px] mx-auto">
+      <div className="w-full flex flex-row flex-wrap px-4 justify-center py-10 max-w-[1600px] mx-auto">
         <Swiper
           slidesPerView={1}
           speed={900}
           navigation={true}
-          modules={[Autoplay, Navigation]}
+          pagination={{
+            dynamicBullets: true,
+          }}
+          modules={[Autoplay, Navigation, Pagination]}
           className="mySwiper"
           autoplay={{
             delay: 3000,

@@ -4,6 +4,7 @@ import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
 import "aos/dist/aos.css";
+import ScrollUpButton from "@/components/ScrollUpButton";
 
 const poppins = Poppins({
   weight: ["200", "300", "400", "500", "600", "700", "800", "900"],
@@ -67,6 +68,7 @@ export default function RootLayout({
               {children}
             </main>
           </div>
+          <ScrollUpButton />
         </body>
       </html>
     </ClerkProvider>
