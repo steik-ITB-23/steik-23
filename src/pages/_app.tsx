@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import "aos/dist/aos.css";
 import AOS from "aos";
+import { ClerkProvider } from "@clerk/nextjs";
 
 const poppins = Poppins({
   weight: ["200", "300", "400", "500", "600", "700", "800", "900"],
@@ -72,19 +73,21 @@ export default function App({ Component, pageProps: { session, ...pageProps } }:
   }, [prevScrollPos]);
 
   return (
-    <SessionProvider baseUrl={process.env.BASE_URL} session={session}>
-      <NextNProgress options={{ showSpinner: false }} />
-      <div
-        className={`transition-all duration-500 ${
-          router.pathname === "/" && !scrolledOneThirdvw
-            ? "bg-gradient-to-t from-black to-[#242828] text-slate-100"
-            : "bg-white text-slate-900"
-        }`}>
-        <main
-          className={`flex min-h-screen flex-col items-center justify-between mx-auto overflow-x-clip ${poppins.variable} ${inter.variable} ${outfit.variable}`}>
-          <Component {...pageProps} />
-        </main>
-      </div>
-    </SessionProvider>
+    <ClerkProvider>
+      <SessionProvider baseUrl={process.env.BASE_URL} session={session}>
+        <NextNProgress options={{ showSpinner: false }} />
+        <div
+          className={`transition-all duration-500 ${
+            router.pathname === "/" && !scrolledOneThirdvw
+              ? "bg-gradient-to-t from-black to-[#242828] text-slate-100"
+              : "bg-white text-slate-900"
+          }`}>
+          <main
+            className={`flex min-h-screen flex-col items-center justify-center mx-auto overflow-x-clip ${poppins.variable} ${inter.variable} ${outfit.variable}`}>
+            <Component {...pageProps} />
+          </main>
+        </div>
+      </SessionProvider>
+    </ClerkProvider>
   );
 }
