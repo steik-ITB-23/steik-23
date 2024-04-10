@@ -1,22 +1,37 @@
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import NextNProgress from "nextjs-progressbar";
-import { Poppins } from "next/font/google";
+import { Inter, Outfit, Poppins } from "next/font/google";
 import { SessionProvider } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import "aos/dist/aos.css";
 import AOS from "aos";
+import { ClerkProvider } from "@clerk/nextjs";
 
-const fontFam = Poppins({
+const poppins = Poppins({
   weight: ["200", "300", "400", "500", "600", "700", "800", "900"],
   subsets: ["latin"],
+  variable: "--font-poppins",
+  display: "swap",
+  adjustFontFallback: false,
+});
+const inter = Inter({
+  weight: ["200", "300", "400", "500", "600", "700", "800", "900"],
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+  adjustFontFallback: false,
+});
+const outfit = Outfit({
+  weight: ["200", "300", "400", "500", "600", "700", "800", "900"],
+  subsets: ["latin"],
+  variable: "--font-outfit",
+  display: "swap",
+  adjustFontFallback: false,
 });
 
-export default function App({
-  Component,
-  pageProps: { session, ...pageProps },
-}: AppProps) {
+export default function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   const router = useRouter();
   const [scrolledOneThirdvw, setScrolledOneThirdvw] = useState(false);
   const [prevScrollPos, setPrevScrollPos] = useState(0);
@@ -58,21 +73,21 @@ export default function App({
   }, [prevScrollPos]);
 
   return (
-    <SessionProvider baseUrl={process.env.BASE_URL} session={session}>
-      <NextNProgress options={{ showSpinner: false }} />
-      <div
-        className={`transition-all duration-500 ${
-          router.pathname === "/" && !scrolledOneThirdvw
-            ? "bg-gradient-to-t from-black to-[#242828] text-slate-100"
-            : "bg-slate-100 text-slate-900"
-        }`}
-      >
-        <main
-          className={`flex min-h-screen flex-col items-center justify-between mx-auto overflow-x-clip ${fontFam.className}`}
-        >
-          <Component {...pageProps} />
-        </main>
-      </div>
-    </SessionProvider>
+    <ClerkProvider>
+      <SessionProvider baseUrl={process.env.BASE_URL} session={session}>
+        <NextNProgress options={{ showSpinner: false }} />
+        <div
+          className={`transition-all duration-500 ${
+            router.pathname === "/" && !scrolledOneThirdvw
+              ? "bg-gradient-to-t from-black to-[#242828] text-slate-100"
+              : "bg-white text-slate-900"
+          }`}>
+          <main
+            className={`flex min-h-screen flex-col items-center justify-center mx-auto overflow-x-clip ${poppins.variable} ${inter.variable} ${outfit.variable}`}>
+            <Component {...pageProps} />
+          </main>
+        </div>
+      </SessionProvider>
+    </ClerkProvider>
   );
 }
