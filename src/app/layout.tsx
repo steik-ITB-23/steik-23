@@ -56,21 +56,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider
-      appearance={{
-        baseTheme: dark,
-      }}>
-      <html lang="en">
-        <body className={inter.className}>
-          <div className={`transition-all duration-500 ${"bg-gradient-to-t from-black to-[#242828] text-black"}`}>
-            <main
-              className={`relative flex min-h-screen flex-col items-center justify-center mx-auto overflow-x-clip ${poppins.variable} ${inter.variable} ${outfit.variable}`}>
-              {children}
-            </main>
-          </div>
-          <ScrollUpButton />
-        </body>
-      </html>
-    </ClerkProvider>
+    // <ClerkProvider
+    //   appearance={{
+    //     baseTheme: dark,
+    //   }}>
+    <html lang="en">
+      <body className={inter.className}>
+        <div className={`transition-all duration-500 ${"bg-gradient-to-t from-black to-[#242828] text-black"}`}>
+          <main
+            className={`relative flex min-h-screen flex-col items-center justify-center mx-auto overflow-x-clip ${poppins.variable} ${inter.variable} ${outfit.variable}`}>
+            {children}
+          </main>
+        </div>
+        <ScrollUpButton />
+      </body>
+    </html>
+    // </ClerkProvider>
   );
 }
