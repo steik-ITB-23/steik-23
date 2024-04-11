@@ -21,26 +21,26 @@ async function getData() {
 
   return [
     {
-      imgUrl: "https://utfs.io/f/b6a7cd72-d4f0-426c-ac8b-b4df3d829b2c-wulzyk.png",
-      topic: "TPB Cup 2024",
-      lable: "Bola Basket Putra - STEI",
+      imgUrl: "https://utfs.io/f/60569513-41b6-4c4d-851d-b9b889454e9c-c9r9pa.png",
+      name: "Tutor Sebaya",
+      description: "Ikut Tubay (Tutor Sebaya) dan dapatkan voucher IP 4 dari BPA akademik STEI-K pasti IP 4",
     },
     {
-      imgUrl: "https://utfs.io/f/b6a7cd72-d4f0-426c-ac8b-b4df3d829b2c-wulzyk.png",
-      topic: "TPB Cup 2024",
-      lable: "Bola Basket Putra - STEI",
+      imgUrl: "https://utfs.io/f/60569513-41b6-4c4d-851d-b9b889454e9c-c9r9pa.png",
+      name: "Tutor Sebaya",
+      description: "Ikut Tubay (Tutor Sebaya) dan dapatkan voucher IP 4 dari BPA akademik STEI-K pasti IP 4",
     },
     {
-      imgUrl: "https://utfs.io/f/b6a7cd72-d4f0-426c-ac8b-b4df3d829b2c-wulzyk.png",
-      topic: "TPB Cup 2024",
-      lable: "Bola Basket Putra - STEI",
+      imgUrl: "https://utfs.io/f/60569513-41b6-4c4d-851d-b9b889454e9c-c9r9pa.png",
+      name: "Tutor Sebaya",
+      description: "Ikut Tubay (Tutor Sebaya) dan dapatkan voucher IP 4 dari BPA akademik STEI-K pasti IP 4",
     },
   ];
 }
 type ProgramKami = {
   imgUrl: string;
-  topic: string;
-  lable: string;
+  name: string;
+  description: string;
 };
 
 const ProgramKami = () => {
@@ -73,23 +73,19 @@ const ProgramKami = () => {
           }}>
           {data?.map((el, i) => (
             <SwiperSlide key={el.imgUrl + i}>
-              <div className="flex flex-col lg:flex-row w-0 min-w-full py-10 px-20 gap-8">
+              <div className="flex flex-col lg:flex-row w-0 min-w-full pb-8 px-12 md:py-10 md:px-20 gap-8">
                 <Image
-                  src="https://utfs.io/f/b6a7cd72-d4f0-426c-ac8b-b4df3d829b2c-wulzyk.png"
-                  alt="https://utfs.io/f/b6a7cd72-d4f0-426c-ac8b-b4df3d829b2c-wulzyk.png"
+                  src={el.imgUrl}
+                  alt={el.imgUrl}
                   width={1200}
                   height={900}
                   className="h-full w-full lg:w-1/2 lg:max-w-[50%] object-cover select-none rounded-xl drop-shadow-md hover:drop-shadow-xl"
                 />
                 <div className="flex flex-col items-center justify-center text-center">
                   <p className="font-bold" style={{ fontSize: "40px" }}>
-                    Tutor Sebaya
+                    {el.name}
                   </p>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                    magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                    labore et dolore magna aliqua.
-                  </p>
+                  <p>{el.description}</p>
                 </div>
               </div>
             </SwiperSlide>

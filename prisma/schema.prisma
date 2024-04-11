@@ -1,0 +1,87 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "cockroachdb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       String  @id @default(cuid())
+  name     String?
+  username String? @unique
+  email    String? @unique
+  password String?
+  IP       Float
+}
+
+model Academic {
+  id        String     @id @default(cuid())
+  semester  Int
+  code      String
+  lesson    String
+  materials Material[]
+  exercises Exercise[]
+  tutorials Tutorial[]
+}
+
+// Materi
+model Material {
+  id         String   @id @default(cuid())
+  academic   Academic @relation(fields: [academicId], references: [id])
+  academicId String
+  fileUrl    String
+  fileType   String
+}
+
+// Bank Soal
+model Exercise {
+  id         String   @id @default(cuid())
+  academic   Academic @relation(fields: [academicId], references: [id])
+  academicId String
+  fileUrl    String
+  fileType   String
+}
+
+// Tutorial
+model Tutorial {
+  id         String   @id @default(cuid())
+  academic   Academic @relation(fields: [academicId], references: [id])
+  academicId String
+  fileUrl    String
+  fileType   String
+}
+
+// Acara
+model Event {
+  id       String @id @default(cuid())
+  imageUrl String
+  name     String
+  type     String
+  content  String
+}
+
+// Pengumuman PTPB
+model PTPBAnnouncement {
+  id       String @id @default(cuid())
+  imageUrl String
+  name     String
+  type     String
+  content  String
+}
+
+// Lab
+model LabAnnouncement {
+  id       String @id @default(cuid())
+  imageUrl String
+  name     String
+  type     String
+  content  String
+}

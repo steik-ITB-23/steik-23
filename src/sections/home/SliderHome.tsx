@@ -24,14 +24,14 @@ async function getData() {
       lable: "Bola Basket Putra - STEI",
     },
     {
-      imgUrl: "https://utfs.io/f/b6a7cd72-d4f0-426c-ac8b-b4df3d829b2c-wulzyk.png",
-      topic: "TPB Cup 2024",
-      lable: "Bola Basket Putra - STEI",
+      imgUrl: "https://utfs.io/f/6b1b857b-e48d-4cd9-832e-b36ea6495dc5-el4pi2.png",
+      topic: "TPB Cup 2024 Opening",
+      lable: "Massa PERKARA",
     },
     {
-      imgUrl: "https://utfs.io/f/b6a7cd72-d4f0-426c-ac8b-b4df3d829b2c-wulzyk.png",
+      imgUrl: "https://utfs.io/f/9e2bfd71-fc03-4e54-a88f-c947e81fa381-9s2rmh.png",
       topic: "TPB Cup 2024",
-      lable: "Bola Basket Putra - STEI",
+      lable: "Bola Basket Putri - STEI",
     },
   ];
 }
@@ -54,7 +54,7 @@ const SliderHome = () => {
   }, []);
 
   return (
-    <section className="h-0 min-h-screen max-h-screen w-full select-none" data-aos="fade-up">
+    <section className="h-[140vw] max-h-screen w-full select-none" data-aos="fade-up">
       <Swiper
         slidesPerView={1}
         speed={900}
@@ -66,8 +66,8 @@ const SliderHome = () => {
         }}>
         {data?.map((slide, i) => (
           <SwiperSlide key={slide.imgUrl + i}>
-            <div className="relative h-full w-full max-h-full max-w-full">
-              <div className="absolute h-[100vh] w-[100vw] left-0 p-4 text-white font-outfit flex flex-col-reverse">
+            <div className="relative h-full w-full max-w-full">
+              <div className="absolute h-full w-[100vw] left-0 p-4 text-white font-outfit flex flex-col-reverse bg-gradient-to-t from-black/60 to-black/10">
                 <p className="text-white font-bold" style={{ fontSize: "30px" }}>
                   {slide.topic}
                 </p>
@@ -78,9 +78,9 @@ const SliderHome = () => {
               <Image
                 src={slide.imgUrl}
                 alt={slide.topic + slide.lable}
-                width={1200}
-                height={900}
-                className="h-screen min-h-screen max-h-screen w-full object-cover select-none"
+                width={2400}
+                height={1800}
+                className="h-full w-full object-cover select-none"
               />
             </div>
           </SwiperSlide>

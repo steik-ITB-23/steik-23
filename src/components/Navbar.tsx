@@ -52,12 +52,20 @@ const Navbar = ({ mainColor = "#F1F2F8", mainTextColor }: { mainColor?: string; 
           setScrolledOneThirdvw(false);
         }
       } else {
+        if (!prevScrollPos && currentScrollPos >= window.innerWidth / 2.8) {
+          setScrolledOneThirdvw(true);
+        }
         setScrollDirection(false);
       }
       setPrevScrollPos(currentScrollPos);
     };
-
     window.addEventListener("scroll", changeShadow);
+
+    if (window.scrollY >= window.innerWidth / 2.8) {
+      setScrolledOneThirdvw(true);
+    } else {
+      setScrolledOneThirdvw(false);
+    }
 
     return () => window.removeEventListener("scroll", changeShadow);
   }, [prevScrollPos]);
@@ -71,7 +79,11 @@ const Navbar = ({ mainColor = "#F1F2F8", mainTextColor }: { mainColor?: string; 
       <header
         className={`sticky left-0 top-0 z-50 h-[5.2rem] flex w-full items-center px-0 duration-500 ease-in-out shadow-md ${
           scrollDirection ? "translate-y-0" : "-translate-y-24"
-        } ${pathName === "/" && !scrolledOneThirdvw ? "bg-none" : "bg-[" + mainColor + "]"}`}>
+        } ${
+          pathName === "/" && !scrolledOneThirdvw
+            ? "bg-gradient-to-b from-black/70 via-black/60 to-black/10"
+            : "bg-[" + mainColor + "]"
+        }`}>
         <div className="w-full px-2 mx-auto">
           <div className="relative flex items-center justify-between">
             <Link href="/" className="w-fit h-[5rem] flex items-center gap-4 pl-4">

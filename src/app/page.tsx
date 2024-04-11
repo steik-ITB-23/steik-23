@@ -21,15 +21,11 @@ export default function Home() {
       <section className="absolute top-0 left-0 flex-grow flex flex-col items-center justify-center w-full overflow-x-clip bg-[#F1F2F8]">
         <SliderHome />
 
-        <div className="px-4 md:px-6 pt-20 pb-10 w-full h-fit font-outfit">
-          <div
-            className="p-2 text-center space-y-8 py-10 w-full max-w-[1200px] mx-auto rounded-lg drop-shadow-xl bg-[#E9EBF8] hover:drop-shadow-2xl border-[1px] border-slate-400"
-            style={{ padding: "20px" }}>
+        <div className="px-4 md:px-6 pt-6 md:pt-20 pb-10 w-full h-fit font-outfit bg-gradient-to-b from-black/5 to-black/0">
+          <div className="p-2 text-center space-y-8 py-6 w-full max-w-[1200px] mx-auto rounded-lg drop-shadow-xl bg-[#E9EBF8] hover:drop-shadow-2xl border-[1px] border-slate-400">
             <p className="text-lg md:text-xl xl:text-2xl">
               Selamat datang di website SYNTAX! Kami menyediakan bebagai tools untuk memudahkan penyaluran informasi dari dan
-              kepada massa STEI-K. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-              labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-              ea commodo consequat.
+              kepada massa STEI-K.
             </p>
             <p className="text-lg md:text-xl xl:text-2xl">-- TIM WEBSITE STEI-K --</p>
           </div>
