@@ -5,9 +5,9 @@ const NEXT_PUBLIC_CLERK_SIGN_UP_URL = process.env.NEXT_PUBLIC_CLERK_SIGN_UP_URL 
 
 export default authMiddleware({
   apiRoutes: [NEXT_PUBLIC_CLERK_SIGN_IN_URL, NEXT_PUBLIC_CLERK_SIGN_UP_URL],
-  publicRoutes: ["/", "/tentang-bpa", "/akademik", "/acara-kemahasiswaan", "/favicon"],
+  publicRoutes: ["/", "/tentang-bpa", "/akademik", "/acara-kemahasiswaan", "/favicon", "/favicon.ico", "/api/user"],
 });
 
 export const config = {
-  matcher: ["/((?!.+.[w]+$|_next).*)", "/", "/(api|trpc)(.*)"],
+  matcher: ["/((?!.+\\.[\\w]+$|_next).*)", "/", "/(api|trpc)(.*)"],
 };

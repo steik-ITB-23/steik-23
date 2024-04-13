@@ -16,7 +16,7 @@ export default function Home() {
   return (
     <div className="min-h-screen w-screen">
       <div className="fixed top-0 left-0 w-full z-50">
-        <Navbar mainColor="#F1F2F8" />
+        <Navbar />
       </div>
       <section className="absolute top-0 left-0 flex-grow flex flex-col items-center justify-center w-full overflow-x-clip bg-[#F1F2F8]">
         <SliderHome />

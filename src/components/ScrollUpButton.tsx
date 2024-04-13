@@ -9,8 +9,6 @@ const ScrollUpButton = () => {
     window.scrollTo({
       top: 0,
       behavior: "smooth",
-      /* you can also use 'auto' behaviour 
-         in place of 'smooth' */
     });
   };
   useEffect(() => {
@@ -27,7 +25,7 @@ const ScrollUpButton = () => {
 
   return (
     <button
-      className="fixed bottom-16 lg:bottom-[120px] right-10 rounded-full border-[1px] aspect-square border-slate-600 bg-slate-200 ease-in duration-150 hover:scale-105 z-[200]"
+      className="fixed bottom-12 sm:bottom-8 lg:bottom-[120px] right-10 rounded-full border-[1px] aspect-square border-slate-600 bg-slate-200 ease-in duration-150 hover:scale-105 z-[200]"
       style={{ display: visible ? "inline" : "none" }}
       onClick={scrollToTop}>
       <AiOutlineArrowUp size={40} />

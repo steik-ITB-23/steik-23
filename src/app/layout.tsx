@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
 import { Poppins, Outfit, Inter } from "next/font/google";
-import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
-import { dark } from "@clerk/themes";
-import "aos/dist/aos.css";
 import ScrollUpButton from "@/components/ScrollUpButton";
+
+import "react-loading-skeleton/dist/skeleton.css";
+import "aos/dist/aos.css";
+import "./globals.css";
+import "@/styles/scrollbar.css";
+import "@/styles/swiper.css";
+import "@/styles/loading_page.css";
 
 const poppins = Poppins({
   weight: ["200", "300", "400", "500", "600", "700", "800", "900"],
@@ -56,21 +60,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    // <ClerkProvider
-    //   appearance={{
-    //     baseTheme: dark,
-    //   }}>
-    <html lang="en">
-      <body className={inter.className}>
-        <div className={`transition-all duration-500 ${"bg-gradient-to-t from-black to-[#242828] text-black"}`}>
-          <main
-            className={`relative flex min-h-screen flex-col items-center justify-center mx-auto overflow-x-clip ${poppins.variable} ${inter.variable} ${outfit.variable}`}>
-            {children}
-          </main>
-        </div>
-        <ScrollUpButton />
-      </body>
-    </html>
-    // </ClerkProvider>
+    <ClerkProvider>
+      <html lang="en">
+        <body className={inter.className}>
+          <div className={`transition-all duration-500 bg-white`}>
+            <main
+              className={`relative flex min-h-screen flex-col items-center justify-center mx-auto overflow-x-clip ${poppins.variable} ${inter.variable} ${outfit.variable}`}>
+              {children}
+            </main>
+          </div>
+          <ScrollUpButton />
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

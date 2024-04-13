@@ -8,28 +8,6 @@
   }
 }
 
-/* Swiper */
-.swiper {
-  width: 100%;
-  height: 100%;
-}
-.swiper-button-prev,
-.swiper-button-next {
-  color: #618095 !important;
-}
-
-/* Scrollbar */
-
-::-webkit-scrollbar {
-  width: 12px;
-  background-color: #f5f8fb;
-}
-
-::-webkit-scrollbar-thumb {
-  -webkit-box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.1);
-  background-color: #d3d5d7;
-}
-
 .font-poppins {
   font-family: var(--font-poppins);
 }

@@ -8,9 +8,10 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { GoHome, GoCopilot } from "react-icons/go";
 import { IoMdBook } from "react-icons/io";
 import { RiGroupLine } from "react-icons/ri";
+import { UserButton, useAuth } from "@clerk/nextjs";
 
 const NavListDesktop = ({ href, routerPathname, lable }: { href: string; routerPathname: string; lable: string }) => (
-  <Link href={href} className="hidden md:block h-full">
+  <Link href={href} className="hidden md:block h-full" scroll={false}>
     <p
       className={
         routerPathname === href ? "border-b-2 border-gray-400" : "hover:brightness-110 hover:border-b-2 border-gray-400"
@@ -20,7 +21,9 @@ const NavListDesktop = ({ href, routerPathname, lable }: { href: string; routerP
   </Link>
 );
 
-const Navbar = ({ mainColor = "#F1F2F8", mainTextColor }: { mainColor?: string; mainTextColor?: string }) => {
+const Navbar = ({ mainColor = "#101351", mainTextColor }: { mainColor?: string; mainTextColor?: string }) => {
+  const { isLoaded, userId } = useAuth();
+
   const pathName = usePathname();
 
   const [scrollDirection, setScrollDirection] = useState(true);
@@ -77,7 +80,7 @@ const Navbar = ({ mainColor = "#F1F2F8", mainTextColor }: { mainColor?: string; 
   return (
     <>
       <header
-        className={`sticky left-0 top-0 z-50 h-[5.2rem] flex w-full items-center px-0 duration-500 ease-in-out shadow-md ${
+        className={`sticky left-0 top-0 z-50 h-[5.2rem] flex w-full items-center px-0 duration-500 ease-in-out drop-shadow-lg ${
           scrollDirection ? "translate-y-0" : "-translate-y-24"
         } ${
           pathName === "/" && !scrolledOneThirdvw
@@ -86,7 +89,7 @@ const Navbar = ({ mainColor = "#F1F2F8", mainTextColor }: { mainColor?: string; 
         }`}>
         <div className="w-full px-2 mx-auto">
           <div className="relative flex items-center justify-between">
-            <Link href="/" className="w-fit h-[5rem] flex items-center gap-4 pl-4">
+            <Link href="/" className="w-fit h-[5rem] flex items-center gap-4 pl-4" scroll={false}>
               <div className={`h-4 min-h-full py-2 transition-all duration-300`}>
                 <Image
                   src="https://utfs.io/f/7648af4a-e902-454b-b937-b7433ef9aa2b-vbi1vd.svg"
@@ -121,15 +124,24 @@ const Navbar = ({ mainColor = "#F1F2F8", mainTextColor }: { mainColor?: string; 
                 <NavListDesktop href="/acara-kemahasiswaan" routerPathname={pathName} lable="Acara" />
               </div>
 
-              {/* <div className="lg:pl-2">
-                <Link
-                  href="/auth/sign-in"
-                  className={`rounded-full  px-4 py-1.5 border-2 ${
-                    pathName === "/" && scrolledOneThirdvw ? "text-slate-800 border-slate-800" : "text-white border-white"
-                  }`}>
-                  LOGIN
-                </Link>
-              </div> */}
+              {!isLoaded && <div className="w-8 animate-pulse bg-black/20"></div>}
+              {isLoaded && userId && (
+                <div className="scale-125 w-[fit rounded-full aspect-square border-[1.8px] border-slate-300">
+                  <UserButton />
+                </div>
+              )}
+              {!isLoaded && !userId && (
+                <div className="lg:pl-2">
+                  <Link
+                    href="/auth/sign-in"
+                    scroll={false}
+                    className={`rounded-full  px-4 py-1.5 border-2 ${
+                      pathName === "/" && scrolledOneThirdvw ? "text-slate-800 border-slate-800" : "text-white border-white"
+                    }`}>
+                    LOGIN
+                  </Link>
+                </div>
+              )}
 
               {/* Mobile Nav Button */}
               <button
