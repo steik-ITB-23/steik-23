@@ -4,10 +4,14 @@ import Head from "next/head";
 import React from "react";
 import Image from "next/image";
 import AkademikCard from "@/components/AkademikCard";
+import Footer from "@/components/Footer";
 
 const index = () => {
   return (
     <>
+      <div className="fixed top-0 left-0 w-full z-50">
+        <Navbar />
+      </div>
       {/*
       <Head>
         <title>Akademik | STEI-K 23</title>
@@ -66,7 +70,7 @@ const index = () => {
             <hr className="border-white border-solid border-t-2 w-full" />
           </div>
           <div className="w-full flex flex-col justify-center items-center">
-            <h1 className="mb-6 font-Outfit font-extrabold text-[60px] sm:text-[80px] lg:text-[125px] tracking-normal text-white text-left leading-tight drop-shadow-[30px_10px_35px_rgba(0,0,0,0.25)]">
+            <h1 className="mb-6 font-Outfit font-extrabold text-[55px] sm:text-[80px] lg:text-[125px] tracking-normal text-white text-left leading-tight drop-shadow-[30px_10px_35px_rgba(0,0,0,0.25)]">
               SEMESTER 1
             </h1>
             <div className="w-full grid grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-3 md:gap-6 justify-items-center">
@@ -128,17 +132,17 @@ const index = () => {
           </div>
         </section>
         {/* section 2 */}
-        <section className="flex flex-col items-center justify-center w-full px-[4%] md:px-[8%] z-10 mb-20">
-          <div className="w-full flex flex-col justify-center items-center">
-            <h1 className="mb-6 font-Outfit font-extrabold text-[60px] sm:text-[80px] lg:text-[125px] tracking-normal text-white text-left leading-tight drop-shadow-[30px_10px_35px_rgba(0,0,0,0.25)]">
+        <section className="flex flex-col items-center justify-center w-full px-[4%] md:px-[8%] z-10 mb-40">
+          <div className="w-full border-t-2 flex flex-col justify-center items-center">
+            <h1 className="my-6 font-Outfit font-extrabold text-[55px] sm:text-[80px] lg:text-[125px] tracking-normal text-white text-left leading-tight drop-shadow-[30px_10px_35px_rgba(0,0,0,0.25)]">
               SEMESTER 2
             </h1>
-            <div className="w-full grid grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-3 md:gap-6 justify-items-center">
+            <div className="w-full grid grid-cols-2 px-4 md:px-0 lg:grid-cols-3 2xl:grid-cols-4 gap-3 md:gap-6 justify-items-center">
               <div className="w-full">
                 <AkademikCard
                   imageUrl="/Akademik/Mat.svg"
                   heading="Matematika IIA"
-                  LinkTo="../"
+                  LinkTo="../akademik/MatematikaIIA/"
                 >
                   MA1201
                 </AkademikCard>
@@ -192,6 +196,7 @@ const index = () => {
           </div>
         </section>
       </section>
+      <Footer />
     </>
   );
 };
